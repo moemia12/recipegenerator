@@ -1,27 +1,4 @@
-
-// import {NavigationContainer} from '@react-navigation/native';
-// import {createStackNavigator} from '@react-navigation/stack';
-// import MacroInputs from './pages/macroInputs';
-// import SavedRecipes from './pages/savedRecipes';
-
-// const Stack = createStackNavigator();
-
-// const App = () => {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="MacroInputs">
-//         <Stack.Screen name="MacroInputs" component={MacroInputs} />
-//         <Stack.Screen name="SavedRecipes" component={SavedRecipes} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// };
-
-// export default App;
-
-
-
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet, Text, View, TextInput,
   Button,
@@ -31,11 +8,11 @@ import {
 import { SelectList } from 'react-native-dropdown-select-list';
 import { ActivityIndicator } from 'react-native';
 import { getDocs, collection } from 'firebase/firestore';
-import { db } from "./components/firebaseConfig"
+import { db } from "../components/firebaseConfig"
 
 const API_URL = 'http://localhost:3005/';
 
-const MacroInput = () => {
+const MacroInputs = () => {
   const [selected, setSelected] = React.useState('');
   const [number] = React.useState(null);
   const [protein, setProtein] = React.useState('');
@@ -64,7 +41,7 @@ const MacroInput = () => {
         console.log(filteredData, '🤬')
         console.log(recipes, '🤨')
       } catch (err) {
-        console.error(err, "😁")
+        console.error(err, "🌲")
       }
 
     }
@@ -105,9 +82,7 @@ const MacroInput = () => {
       console.error(error);
       alert(error.message);
     }
-    
   }
-  setTimeout(onSubmit, 5000)
 
   function formatDataWithBoldTags(response) {
 
@@ -191,7 +166,7 @@ const MacroInput = () => {
             placeholder="Meal Type"
           />
         </View>
-        {/* <View>
+        <View>
           <Text>Recipes Mapped below</Text>
           {recipes.map((recipe) => {
             return (
@@ -203,7 +178,7 @@ const MacroInput = () => {
               </View>
             );
           })}
-        </View> */}
+        </View>
         <Button
           title="Submit"
           onPress={async () => {
@@ -291,5 +266,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MacroInput;
-
+export default MacroInputs;
